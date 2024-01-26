@@ -1,0 +1,52 @@
+html{
+    height: -webkit-fill-available;  /* Mòbils */
+}body{
+    display: flex;  /*Es veuen tots els elements i facilita el posicionament */
+    flex-direction: column; /* Els elements es disposen verticalment */
+    justify-content: space-between; /*Els elements ocupen tot l'espai disponible */
+    min-height: 100vh; /*Alçària de la pantall en navegadors d'escriptori */
+    min-height: 100svh; /*Per a navegadors on la declaració anterior no es precisa */
+    min-height: -webkit-fill-available; 
+    margin: 0px; /*Els marges del document */
+    font-family: sans-serif; /*El tipus de lletra del document */
+    background-color: #FFFFFF; /*El color de fons */
+}
+
+#Nom_i_logo{
+    display: flex;
+    height: 8vmax;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+    color:black;
+    background-color: #FCFF7A;
+
+}#Barreta_de_recerca{
+    display: flex;
+    height: 4vmax;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+    color:black;
+    background-color: 	#7FFFD4;
+}#Notes_guardades{
+    display: flex;
+    height: 80vmax;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+    color:black;
+}#Crear_notes{
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+    color:black;
+    background-color: 	#7FFFD4;
+}#Contacte_i_opcions{
+    height: 4vmax;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+    color:black;
+    background-color: 	#d4d6d6;
+}
