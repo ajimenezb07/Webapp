@@ -17,9 +17,14 @@ body {
 
 #seccio_0 {
     display: none; /*Per activar l'inici de sessió*/
-}
-#seccio_2 {
-    display: flex; /*Per activar la càmera de fotos*/
+}#seccio_1 {
+    display: flex; /*Per activar la configuració*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+}#seccio_2 {
+    display: none; /*Per activar la càmera de fotos*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -34,9 +39,57 @@ body {
     display: none;  /*Per activar el mapa*/
 }
 
+/*Elements de la configuració*/
+
+/*Seleccionar idioma*/
+#idioma{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: cursive, sans-serif;
+    outline: 0;
+    background: #b0f2c2;
+    color: black;
+    border: 1px solid #e7e735;
+    padding: 4px;
+    border-radius: 9px;
+  }
+
+#idioma:focus{
+    outline:none;
+  }
+/**********************/
+
+/*labels*/
+
+#labelidioma{
+    font-family: cursive, sans-serif;
+    font-size: 2vmax;
+}   
+#labelcasella{
+    font-family: cursive, sans-serif;
+    font-size: 2vmax;
+/**********************/
+
+/*Polítiques de privacitat*/
+}#privacitat{
+    text-align: center;
+
+}#text_títol{
+    font-family: cursive, sans-serif;
+    font-size: 2vmax;
+}
+#text{
+    font-size: 1vmax;
+    max-width: 30vmax;
+    text-align: justify;
+}
+/************************/
+
+/*Secció 3*/
 #llista_titol i {
     margin: 30%;  
 }
+/******************/
 
 /******************/
 
@@ -86,13 +139,7 @@ body {
     margin: 1vmin;
     background-color: burlywood;
 }
-#seccio_1 {
-    display: none;
-    justify-content: center;    /* contingut centrat en la direcció de disposició */
-    align-items: center;    /* contingut centrat en la direcció transversal */
-    font-size: 4vmax;
 
-}
 #menu {
     display: flex;    /* el menú és un contenidor de tipus flex */
     height: 8vmax;
@@ -219,5 +266,6 @@ body {
     #llista_fotos {
         height: 70vmin;
     }
+   
 }
 
