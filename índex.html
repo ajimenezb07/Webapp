@@ -1,87 +1,82 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset = "UTF-8">
-        <meta name = "viewport" content = "widht = device-widht, initial-scale = 1">
-        <meta name = "description" content = "Accedeix a la versió web de Notemind">
-        <link rel = "stylesheet" href="índex.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/solid.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>  
-      </head>
-    <body>        
-            <div id = "Nom_i_logo">
-                Nom i logo
-    
-            </div>
-            <div id =  "Barreta_de_recerca">
-                Barreta de recerca
-    
-            </div>
-            <div id = "Notes_guardades">
-                Notes guardades
-    
-            </div>
-
-            <div id="inicidesessió" class = "inicidesessió">
-                <div>
-                    Inici de sessió    
-                  </div> 
-                  <div id="credencials">    
-                    <div>
-                      <label for="nom_usuari">Nom d'usuari</label>
-                      <input type="text" id="nom_usuari">
-                    </div>
-                    <div>
-                      <label for="contrasenya">Contrasenya</label>        
-                      <input type="password" id="contrasenya">
-                    </div>
-                  </div>
-                  <div id="botons_sessio">    
-                    <button>Inicia sessió</button>
-                    <button>Nou usuari</button>
-                  </div>         
-                </div>
-
-            <div id = "Opcions_notes">
-                <i id="boto_1" class="fa-solid fa-plus"></i>      
-                <i id="boto_2" class="fa-solid fa-folder"></i>      
-                <i id="boto_3" class="fa-solid fa-trash"></i>      
-                <i id="boto_4" class="fa-solid fa-calendar-days"></i>      
-                <i id="boto_5" class="fa-solid fa-gear"></i>         
-            </div>
-            <div id = "Contacte_i_opcions">
-                Contacte i opcions
-        </div>
-        <div id="Fotos" class="fotos">
-          <div id="div_foto">    
-            <img id="foto">
-            <i id="icona_camera" class="fa-solid fa-image"></i>    
-          </div>
-          <div id="div_control">    
-              <label for="obturador">    
-                <i class="fa-solid fa-circle-dot"></i>   
-              </label>
-              <input type="file" accept="image/*" id="obturador" capture="camera" /> 
-              <i id="desa" class="fa-solid fa-check"></i>   
-          </div>
-        </div>        
-        <canvas id="canvas"></canvas>
-     <div id="div_gran">
-       <img id="foto_gran" />
-     </div>
-     <div id="galeria" class="fotos">
-      <div id="llista_titol">    
-        <i class="fa-solid fa-image"></i>    
-        <i class="fa-solid fa-calendar-days"></i>    
-        <i class="fa-solid fa-trash"></i>       
+<!DOCTYPE html>    <!-- tipus de document (HTML) -->  
+<html lang="ca">  <!-- contingut -->
+  <head>    <!-- capçalera -->
+    <meta charset="UTF-8">    <!-- codificació del text (UTF-8) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- adapta la visualització a les mides de la pantalla -->
+    <meta name="description" content="Descripció de la nostra webapp.">    <!-- breu descripció per als cercadors -->
+    <link rel="stylesheet" href="índex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/solid.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>  
+    <title>    <!-- títol que es visualitza en la part superior del navegador -->
+        Notemind;
+    </title>
+  </head>
+  <body>    <!-- cos -->
+    <div id="superior">    <!-- franja superior per mostar el nom de la webapp -->
+      Nom de la webapp
+  </div>
+  <div id="seccio_0" class="seccio">
+    <div>
+      Inici de sessió    <!-- títol de la secció -->
+    </div> 
+    <div id="credencials">    <!-- contenidor per als quadres de text -->
+      <div>
+        <label for="nom_usuari">Nom d'usuari</label>
+        <input type="text" id="nom_usuari">
       </div>
-      <div id="llista_fotos">    
+      <div>
+        <label for="contrasenya">Contrasenya</label>        
+        <input type="password" id="contrasenya">
       </div>
     </div>
-    <div id="mapa" class="fotos">
-        S'haura d'eliminar aquest text.    
+    <div id="botons_sessio">    <!-- contenidor per als botons -->
+      <button>Inicia sessió</button>
+      <button>Nou usuari</button>
+    </div>         
+  </div>
+  <div id="seccio_1" class="seccio">    <!-- espai central per mostrar contingut -->
+      Secció 1
+  </div>
+  <div id="seccio_2" class="seccio">
+    <div id="div_foto">    <!-- contenidor de la vista prèvia de la foto feta -->
+      <img id="foto">
+      <i id="icona_camera" class="fa-solid fa-image"></i>    <!-- icona que ocupa l'espai quan encara no s'ha fet la foto -->
     </div>
-    </body>
+    <div id="div_control">    <!-- contenidor dels botons per fer i desar la foto -->
+        <label for="obturador">    <!-- etiqueta auxiliar per ocultar el botó predeterminat -->
+          <i class="fa-solid fa-circle-dot"></i>    <!-- icona del botó per fer la foto -->
+        </label>
+        <input type="file" accept="image/*" id="obturador" capture="camera" /> <!-- element que captura la imatge -->
+        <i id="desa" class="fa-solid fa-check"></i>    <!-- icona del botó per desar la foto -->
+    </div>
+  </div>
+  <div id="seccio_3" class="seccio">
+    <div id="llista_titol">    <!-- capçalera de la llista de fotos -->
+      <i class="fa-solid fa-image"></i>    <!-- per a la miniatura de les fotos -->
+      <i class="fa-solid fa-calendar-days"></i>    <!-- per a la data de captura de les fotos -->
+      <i class="fa-solid fa-trash"></i>    <!-- per esborrar les fotos -->    
+    </div>
+    <div id="llista_fotos">    <!-- contenidor, inicialment buit, on hi haurà una fila per a cada foto -->
+    </div>
+  </div>
+  <div id="seccio_4" class="seccio">
+    Secció 4    <!-- s'ha d'eliminar el text "Secció 4" -->
+</div>
+<canvas id="canvas"></canvas>
+<div id="div_gran">
+  <img id="foto_gran" />
+</div>
+  <div id="menu">    <!-- franja inferior per al menú de navegació -->
+    <i id="boto_1" class="fa-solid fa-plus"></i>    <!-- afergir nota -->     
+    <i id="boto_1" class="fa-solid fa-folder"></i>    <!-- carpeta de notes -->     
+    <i id="boto_1" class="fa-solid fa-trash"></i>    <!-- eliminar nota -->     
+    <i id="boto_1" class="fa-solid fa-calendar"></i>    <!-- alarmes de les notes -->     
+    <i id="boto_2" class="fa-solid fa-camera"></i>    <!-- càmera -->
+    <i id="boto_3" class="fa-solid fa-image"></i>     <!-- galeria -->
+    <i id="boto_4" class="fa-solid fa-map"></i>    <!-- mapa -->
+    <i class="fa-solid fa-right-from-bracket"></i>    <!-- tancar sessió -->
+  </div>
+  </body>
 </html>

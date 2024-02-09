@@ -1,94 +1,111 @@
-html{
-    height: -webkit-fill-available;  /* Mòbils */
+html { 
+    height: -webkit-fill-available;    /* per a dispositius mòbils */
 }
-body{
-    display: flex;  /*Es veuen tots els elements i facilita el posicionament */
-    flex-direction: column; /* Els elements es disposen verticalment */
-    justify-content: space-between; /*Els elements ocupen tot l'espai disponible */
-    min-height: 100vh; /*Alçària de la pantall en navegadors d'escriptori */
-    min-height: 100svh; /*Per a navegadors on la declaració anterior no es precisa */
-    min-height: -webkit-fill-available; 
-    margin: 0px; /*Els marges del document */
-    font-family: sans-serif; /*El tipus de lletra del document */
-    background-color: #FFFFFF; /*El color de fons */
+body {
+    display: flex;    /* tipus de display que ofereix més prestacions que block */
+    flex-direction: column;    /* els elements es disposen de dalt cap abaix */
+    justify-content: space-between;    /* els elements, separats per espais, ocupen tot l'espai disponibles */
+    min-height: 100vh;    /* alçària de la pantalla en navegadors d'escriptori */
+    min-height: 100svh;    /* per a navegadors on la declaració anterior no és precisa */
+    min-height: -webkit-fill-available;    
+    margin: 0px;    /* elimina tots els marges del document */
+    font-family: sans-serif;    /* un tipus de lletra adient per a llocs web */
+    background-color: white;    /* color de fons en format #RRGGBB */
 }
 
-#Nom_i_logo{
-    display: flex;
-    height: 8vmax;
-    justify-content: center;
-    align-items: center;
-    font-size: 4vmax;
-    color:black;
-    background-color: #FCFF7A;
+/*Afegit per mi*/
 
-}#Barreta_de_recerca{
-    display: flex;
-    height: 4vmax;
-    justify-content: center;
-    align-items: center;
-    font-size: 4vmax;
-    color:black;
-    background-color: 	#7FFFD4;
-}#Notes_guardades{
-    display: none;
-    height: 68vmax;
-    justify-content: center;
-    align-items: center;
-    font-size: 4vmax;
-    color:black;
-}#Opcions_notes{
-    display: flex;
-    height: 4vmax;
-}#Opcions_notes i{
-    flex: 1;    /* cada botó pretén ocupar tot l'espai disponible */
-    display: flex;    /* contenidor flex on centrar-hi la icona */
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: #7FFFD4;
-    font-size: 5vmax;
-    cursor: pointer;    /* indica que es pot fer clic quan si s'està a l'ordinador */
-}#Contacte_i_opcions{
-    height: 4vmax;
-    justify-content: center;
-    align-items: center;
-    font-size: 4vmax;
-    color:black;
-    background-color: 	#d4d6d6;
+#seccio_0 {
+    display: none; /*Per activar l'inici de sessió*/
 }
-#inicidesessió {
-    flex: 1;
-    display: flex;
+#seccio_2 {
+    display: flex; /*Per activar la càmera de fotos*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2vmax;
+    font-size: 4vmax;
+}#seccio_3 {
+    display: none; /*Per activar la galeria*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+}#seccio_4 {
+    display: none;  /*Per activar el mapa*/
+}
+
+#llista_titol i {
+    margin: 30%;  
+}
+
+/******************/
+
+
+#superior {
+    display: flex;
+    height: 8vmax;    /* alçària d'un 8% respecte l'alçària de la pantalla */
+    justify-content: center;    /* centra els elements en la direcció de disposició */
+    align-items: center;    /* centra els elements en la direcció perpendicular a la de disposició */
+    font-size: 4vmax;    /* mida d'un 4% respecte l'alçària de la pantalla */
+    color: white;    /* color del text */
+    background-color: #e7e735;    /* color de fons */
+}
+.seccio {
+    flex: 1;    /* les seccions ocupen tot l'espai disponible */
+    display: none;    /* les seccions s'inicien ocultes, excepte la primera */
+}
+#seccio_0 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vmax;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 #credencials {
     display: flex;
     flex-direction: column;
     text-align: right;
-    font-size: 1vmax;
+    font-size: 3vmax;
     margin: 5vmin;
 }
-#credencials div {    
+#credencials div {    /* els 2 <div> dins de credencials */
     margin-bottom: 1vmin;
 }
-#credencials input {    
-    max-width: 20vmax;    
-    font-size: 1vmax;
+#credencials input {    /* els 2 quadres de text dins de credencials */
+    max-width: 20vmax;    /* es limita l'espai que ocupen els quadres de text */
+    font-size: 3vmax;
 }
 #botons_sessio {
     display: flex;
     align-items: center;
-
+    background-color: #b0f2c2;
 }
-#botons_sessio button {    
-    font-size: 1vmax;
+#botons_sessio button {    /* els 2 botons dins de botons_sessio */
+    font-size: 3vmax;
     padding: 2vmin;
     margin: 1vmin;
-    background-color:#FCFF7A
+    background-color: burlywood;
+}
+#seccio_1 {
+    display: none;
+    justify-content: center;    /* contingut centrat en la direcció de disposició */
+    align-items: center;    /* contingut centrat en la direcció transversal */
+    font-size: 4vmax;
+
+}
+#menu {
+    display: flex;    /* el menú és un contenidor de tipus flex */
+    height: 8vmax;
+}
+#menu i{
+    flex: 1;    /* cada botó pretén ocupar tot l'espai disponible */
+    display: flex;    /* contenidor flex on centrar-hi la icona */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #e7e735;
+    font-size: 5vmax;
+    cursor: pointer;    /* en ordinadors, indica que s'hi pot fer clic */
 }
 
 #div_foto {
@@ -98,9 +115,10 @@ body{
     align-items: center;
 }
 #icona_camera {
-    font-size: 60vmin;
-    color: #7FFFD4;
-}#foto {
+    font-size: 40vmin;
+    color: #b0f2c2;
+}
+#foto {
     max-width: 60vmin;    /* dimensions màximes per a la prveisualització de les fotos */
     max-height: 60vmin;
     cursor: pointer;
@@ -117,7 +135,7 @@ body{
     color: gray;
 }
 #obturador {
-    position: relative;
+    position: absolute;
     width: 0;
     opacity: 0;
 }
@@ -139,45 +157,24 @@ body{
     max-height: 95vmax;
     cursor: pointer;
 }
-@media (orientation: landscape) {
- #fotos{
-    flex-direction: row;
-    }
- #div_foto {
-    flex-direction: column;
-    }
- #div_control {
-    width: 25vmax;
-    height: auto;
-    flex-direction: column;
-    }
- #div_gran {
-     max-height: 100vh;
-     max-height: 100svh;
-    }
- #foto_gran {
-    transform: rotate(-90deg);    
-    }
-}
-
 #llista_titol {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: black;
 }
 #llista_titol i {
     font-size: 4vmax;
-    color: white;
+    color:#b0f2c2;
 }
-#llista_titol i:nth-child(1) {    
+#llista_titol i:nth-child(1) {    /* primer <i> (miniatura de la foto) */
     flex: 2;
 }
-#llista_titol i:nth-child(2) {    
+#llista_titol i:nth-child(2) {    /* segon <i> (data i hora) */
     flex: 3;
 }
-#llista_titol i:nth-child(3) {    
+#llista_titol i:nth-child(3) {    /* tercer <i> (icona per esborrar la foto) */
     flex: 1;
 }
 #llista_fotos {
@@ -185,10 +182,42 @@ body{
     overflow-y: scroll;
 }
 #llista_fotos::-webkit-scrollbar {
-    display: none;    
+    display: none;    /* oculta la barra de desplaçament vertical */
 }
+
 @media (orientation: landscape) {
-#llista_fotos {
-     height: 70vmin;
+    body {
+        flex-direction: row;    /* sobreescriu la declaració flex-direction: column; */
+        flex-flow: row-reverse;    /* disposició de dreta a esquerra, per mostrar el menú a l'esquerra */
+    }
+    #superior {
+        display: none;    /* franja superior oculta per optimitzar l'espai */
+    }
+    #menu {
+        flex-direction: column;
+        width: 8vmax;
+        height: auto;    /* sobreescriu la declaració height: 8vmax; */
+    }
+    #seccio_2 {
+        flex-direction: row;
+    }
+    #div_foto {
+        flex-direction: column;
+    }
+    #div_control {
+        width: 25vmax;
+        height: auto;
+        flex-direction: column;
+    }
+    #div_gran {
+        max-height: 100vh;
+        max-height: 100svh;
+    }
+    #foto_gran {
+        transform: rotate(-90deg);    /* gir de 90 graus correponent al canvi d'orientació */
+    }
+    #llista_fotos {
+        height: 70vmin;
+    }
 }
-}
+
