@@ -110,6 +110,7 @@ window.onload = () => {
             }
         }
     });
+
 }
 
 function desa_foto() {
