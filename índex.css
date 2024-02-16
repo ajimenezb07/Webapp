@@ -16,9 +16,9 @@ body {
 /*Afegit per mi*/
 
 #seccio_0 {
-    display: none; /*Per activar l'inici de sessió*/
+    display: flex; /*Per activar l'inici de sessió*/
 }#seccio_1 {
-    display: flex; /*Per activar la configuració*/
+    display: none; /*Per activar la configuració*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -141,7 +141,7 @@ body {
 }
 
 #menu {
-    display: flex;    /* el menú és un contenidor de tipus flex */
+    display: none;    /* el menú és un contenidor de tipus flex */
     height: 8vmax;
 }
 #menu i{
