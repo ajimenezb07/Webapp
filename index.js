@@ -9,8 +9,6 @@ function canvia_seccio(num_boto) {
             boto.style.backgroundColor = "#b0f2c2";
             seccio.style.display = "flex";    // es fa visible la secció activa
             
-        }if (num_boto == 3) {    // si es prem el botó de la secció "Galeria"
-            omple_llista();
         }
         else {
             boto.style.color = "white";    // colors dels botons de seccions inactives
@@ -48,8 +46,8 @@ function inici_sessio() {
 function inicia_sessio() {
     validat = true;    // usuari validat
     document.getElementById("seccio_0").style.display = "none";    // s'oculta la secció de validació d'usuaris
-    document.getElementById("menu").style.display = "flex";    // s'oculta la secció de validació d'usuaris
-    canvia_seccio(1);    // es mostra la secció 1
+    document.getElementById("menu").style.display = "flex";    
+    canvia_seccio(2);    // es mostra la secció 1
 }
 
 function nou_usuari() {
