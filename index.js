@@ -8,6 +8,9 @@ function canvia_seccio(num_boto) {
             boto.style.color = "white";    // es destaca la secció activa amb el canvi de colors del botó corresponent
             boto.style.backgroundColor = "#b0f2c2";
             seccio.style.display = "flex";    // es fa visible la secció activa
+            
+        }if (num_boto == 3) {    // si es prem el botó de la secció "Galeria"
+            omple_llista();
         }
         else {
             boto.style.color = "white";    // colors dels botons de seccions inactives
