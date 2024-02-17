@@ -47,7 +47,7 @@ function inicia_sessio() {
     validat = true;    // usuari validat
     document.getElementById("seccio_0").style.display = "none";    // s'oculta la secció de validació d'usuaris
     document.getElementById("menu").style.display = "flex";    
-    canvia_seccio(1);    // es mostra la secció 1
+    canvia_seccio(4);    // es mostra la secció 1
 }
 
 function nou_usuari() {
