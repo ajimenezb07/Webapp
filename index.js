@@ -1,6 +1,9 @@
 function canvia_seccio(num_boto) {
     const menu = document.getElementById("menu");
     const num_botons = menu.children.length;    // el nombre de botons dins de l'element "menu"
+    if (num_boto == 3) {    // si es prem el botó de la secció "Galeria"
+        omple_llista();
+    }
     for (let i = 1; i < num_botons; i++) {
         let boto = document.getElementById("boto_" + i);
         let seccio = document.getElementById("seccio_" + i);
@@ -174,3 +177,37 @@ function retorn_a_seccio() {
         document.getElementById("seccio_3").style.display = "flex";
     }
 }
+
+function omple_llista() {
+    let llista = '';
+    indexedDB.open("Dades").onsuccess = event => {
+        event.target.result.transaction(["Fotos"], "readonly").objectStore("Fotos").index("Usuari_index").getAll(usuari).onsuccess = event => {
+            dades = event.target.result;
+            for (i in dades) {    // per cada foto
+                llista+= '<div class="llista_fila"><div><img src="';    // es crea un contenidor de fila
+                llista+= dades[i]["Foto"];    // miniatura de la foto
+                llista+= '" onclick="mostra_foto(';    // atribut d'esdeveniment (mostrar la foto)
+                llista+= dades[i]["ID"];    // valor numèric que identifica el registre de la foto
+                llista+= ')" /></div><span>'; 
+                llista+= dades[i]["Data"];    // data i hora de la foto
+                llista+= '</span><i class="fa-solid fa-trash" onclick="esborra_foto(';    // atribut d'esdeveniment (esborrar la foto)
+                llista+= dades[i]["ID"];
+                llista+= ')"></i></div>';         
+            }
+            document.getElementById("llista_fotos").innerHTML = llista;    // s'ocupa el contenidor "llista_fotos" amb el fragment HTML creat
+        }
+    }
+}
+
+function esborra_foto(id) {
+    if (confirm("Vols esborrar la foto?")) {    // es demana la confirmació a l'usuari
+        indexedDB.open("Dades").onsuccess = event => {   
+                event.target.result.transaction("Fotos", "readwrite").objectStore("Fotos").delete(id).onsuccess = () => {
+                alert("La foto s'ha esborrat.");
+                canvia_seccio(3);    // es recarrega la galeria per tal que ja no mostri la foto esborrada
+            };
+        };
+    }
+}
+
+
