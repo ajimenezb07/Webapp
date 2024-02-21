@@ -254,7 +254,7 @@ body {
 }
 .llista_fila i {    /* icona per esborrar la foto */
     flex: 1;
-    color: #950E17;
+    color: #b0f2c2;
     font-size: 4vmax !important;
     cursor: pointer;
 }

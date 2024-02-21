@@ -1,30 +1,9 @@
-function canvia_seccio(num_boto) {
-    const menu = document.getElementById("menu");
-    const num_botons = menu.children.length;    // el nombre de botons dins de l'element "menu"
-    if (num_boto == 3) {    // si es prem el botó de la secció "Galeria"
-        omple_llista();
-    }
-    for (let i = 1; i < num_botons; i++) {
-        let boto = document.getElementById("boto_" + i);
-        let seccio = document.getElementById("seccio_" + i);
-        if (i == num_boto) {
-            boto.style.color = "white";    // es destaca la secció activa amb el canvi de colors del botó corresponent
-            boto.style.backgroundColor = "#b0f2c2";
-            seccio.style.display = "flex";    // es fa visible la secció activa
-            
-        }
-        else {
-            boto.style.color = "white";    // colors dels botons de seccions inactives
-            boto.style.backgroundColor = "#e7e735";
-            seccio.style.display = "none";    // s'oculten les seccions inactives
-        }
-    }
-}
-
-
-let validat = false;    // variable que permet saber si hi ha algun usuari validat
+let mapa;
+let storage = window.localStorage;
+let validat = false;  // variable que permet saber si hi ha alºgun usuari validat
 let nom, contrasenya;
 let scriptURL = "https://script.google.com/macros/s/AKfycbz8wnkKwHQuZx2YSNSODuaWG2LnpFzI0zfjp_xfCrJ43QsvvzRpRTClRyxBbya7Pdeo/exec"    // s'ha de substituir la cadena de text per la URL del script
+let usuari;
 
 function inici_sessio() {
     nom = document.getElementById("nom_usuari").value;    // la propietat "value" d'un quadre de text correspon al text escrit per l'usuari
@@ -40,7 +19,9 @@ function inici_sessio() {
             }
             else {    // llista amb (almenys) un registre
                 window.alert("S'ha iniciat correctament la sessió.");
-                inicia_sessio();    // usuari validat, s'executen les instruccions del procediment "inicia_sessio"
+                inicia_sessio();   
+                usuari = nom;
+                // usuari validat, s'executen les instruccions del procediment "inicia_sessio"
             }
         });    
 }
@@ -91,7 +72,28 @@ function tanca_sessio() {
 }
 
 window.onload = () => { 
+    mapa = L.map("seccio_4").setView([41.72, 1.82], 8);    // assigna el mapa a la secció, centrat en el punt i amb el nivell de zoom
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {    // capa d'OpenStreetMap
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'    // autoria de la capa
+    }).addTo(mapa);
+
+    L.marker([41.39, 2.17], {title:"Barcelona"}).addTo(mapa);    // l'opció "title" fa que es mostri el text "Barcelona" quan es passa el ratolí sobre el marcador
+
+    let pixels = 24;    // nombre de píxels de la forma
+    let mida = 2 * pixels;    // mida de visualització en el mapa
+    let ref_vertical = mida / 2;    // distància vertical des del punt superior de la icona fins al punt de la localització
+    let color = "yellow";
+    let path = "M12,1C10.89,1 10,1.9 10,3C10,4.11 10.89,5 12,5C13.11,5 14,4.11 14,3A2,2 0 0,0 12,1M10,6C9.73,6 9.5,6.11 9.31,6.28H9.3L4,11.59L5.42,13L9,9.41V22H11V15H13V22H15V9.41L18.58,13L20,11.59L14.7,6.28C14.5,6.11 14.27,6 14,6";    // cadena de text de la forma
+    let cadenaSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + pixels + ' ' + pixels + '"><path d="' + path + '" fill="' + color + '" /></svg>';    // construcció de l'element SVG
+    let icona = encodeURI("data:image/svg+xml," + cadenaSVG);    // codificació d'espais i caràcters especials per formar una URL vàlida
+    let icon = L.icon({    // propietats de la icona
+    iconUrl: icona,    // URL de la forma
+    iconSize: [mida, mida],    // mida de la icona
+    iconAnchor: [mida / 2, ref_vertical]    // distàncies (horitzontal i vertical) des del punt superior esquerre de la icona fins al punt de localització
+}); 
+
     let base_de_dades = storage.getItem("base_de_dades");   
+
     if(base_de_dades == null) {
         indexedDB.open("Dades").onupgradeneeded = event => {   
             event.target.result.createObjectStore("Fotos", {keyPath: "ID", autoIncrement:true}).createIndex("Usuari_index", "Usuari");
@@ -178,6 +180,50 @@ function retorn_a_seccio() {
     }
 }
 
+function geoExit(posicio){
+    let latitud = posicio.coords.latitude;
+    let longitud = posicio.coords.longitude;
+    if (typeof geoID === "undefined") {    
+        geoID = L.marker([latitud, longitud], {zIndexOffset:100, title:"Usuari"}).addTo(mapa);    // es defineix el marcador  geoID i es situa per sobre dels altres
+    } else {    // primeres dades de localització, es crea el marcador d'usuari 
+        geoID.setLatLng([latitud, longitud]);    // actualització de la posició del marcador d'usuari en el mapa
+    }
+
+    geoID = L.marker([latitud, longitud], {icon:icon, zIndexOffset:100, title:"Usuari"}).addTo(mapa);
+
+}
+
+function canvia_seccio(num_boto) {
+    const menu = document.getElementById("menu");
+    const num_botons = menu.children.length;    // el nombre de botons dins de l'element "menu"
+    if (num_boto == 3) {    // si es prem el botó de la secció "Galeria"
+        omple_llista();
+    }
+    if (num_boto == 4) {
+        mapa.invalidateSize();
+        if (typeof geoID === "undefined") {    // si encara no s'han obtingut les dades de localització del dispositiu
+            navigator.geolocation.watchPosition(geoExit);    // inicia el seguiment de la localització del dispositiu
+        }
+    }
+
+    for (let i = 1; i < num_botons; i++) {
+        let boto = document.getElementById("boto_" + i);
+        let seccio = document.getElementById("seccio_" + i);
+        if(seccio != null){
+         if (i == num_boto) {
+            boto.style.color = "white";    // es destaca la secció activa amb el canvi de colors del botó corresponent
+            boto.style.backgroundColor = "#b0f2c2";
+            seccio.style.display = "flex";    // es fa visible la secció activa
+        }
+        else {
+            boto.style.color = "white";    // colors dels botons de seccions inactives
+            boto.style.backgroundColor = "#e7e735";
+            seccio.style.display = "none";    // s'oculten les seccions inactives
+        }
+    }
+    }
+}
+
 function omple_llista() {
     let llista = '';
     indexedDB.open("Dades").onsuccess = event => {
@@ -209,5 +255,3 @@ function esborra_foto(id) {
         };
     }
 }
-
-
